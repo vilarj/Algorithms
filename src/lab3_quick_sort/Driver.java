@@ -53,7 +53,7 @@ public class Driver {
         System.out.print("\nSorted List: ");
         secondSet.toArray (secondList);
         long secondEnd = System.currentTimeMillis() - secondBeginning;
-        System.out.print ("\n\nSecond Timer:" + secondEnd);
+        System.out.print ("\n\nSecond Timer: " + secondEnd);
         // Closing the Scanner class
         input.close();
 
