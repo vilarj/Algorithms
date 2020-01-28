@@ -5,8 +5,9 @@ public class QuickSort <T extends Comparable <? super T> > {
     public QuickSort (T[] list, int low, int high) {
         if (list.length <= 4) {
             InsertionSort<T> toInsert = new InsertionSort <>(list);
+            toInsert.toArray(list);
         }
-        quickSort(list, low, high - 1);
+        quickSort(list, low, high - 1); // -1 because we do not want to exceed the boundaries of the list
     }
 
     public void quickSort (T[] list, int low, int high) {
