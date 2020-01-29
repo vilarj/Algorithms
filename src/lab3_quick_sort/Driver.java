@@ -7,11 +7,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Driver {
+
     public static void main (String[] args) throws IOException {
-//        String[] list = {"Las Vegas", "Boston", "Orlando", "San Francisco", "Montpelier", "Dallas", "Austin", "Columbus", "Hartford", "Miami"};
-//
-//        QuickSort<String> set = new QuickSort <>(list, 0, list.length);
-//        set.toArray (list);
         FileWriter file_writer = new FileWriter("sorted_book");
         Reader reader = new Reader("book");
         String[] vocabulary = reader.get();
@@ -20,8 +17,8 @@ public class Driver {
         QuickSort<String> toSort = new QuickSort<>(vocabulary, 0, vocabulary.length);
 
         for(String word : vocabulary) {
-            System.out.println(word); // printing out to console the original file in words
-            file_writer.write(word); // writing to the file "sorted_book"
+            System.out.println(word);
+            file_writer.write(word);
         }
 
         long end = System.currentTimeMillis() - beginning;
@@ -35,8 +32,7 @@ public class Driver {
          */
         System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#1**\n");
 
-        long start3, end3;
-
+        long start3;
         Integer[] sizeOneArray = new Integer[1000];
         Integer[] sizeTwoArray = new Integer[10000];
         Integer[] sizeThreeArray = new Integer[100000];
@@ -67,16 +63,6 @@ public class Driver {
         sorted = new QuickSort <>(sizeFourArray, 0, sizeFourArray.length);
         end =  System.currentTimeMillis();
         System.out.printf("10^6 Time: %d ms %n", end - start3);
-
-        /**
-         * ## Bonus #2 ##
-         * Implement the alternative version of QuickSort as described in the slide 14 of Lec3a:
-         * stop quicksort when subarray is not larger than 4 elements,
-         * and then apply insertion sort to the whole array.
-         */
-
-        System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#2**\n");
-        AlternativeQuickSort<>
     }
 
     private static void initialize(Integer[] array)
