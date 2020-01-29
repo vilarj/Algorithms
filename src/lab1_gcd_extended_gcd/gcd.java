@@ -1,3 +1,5 @@
+package lab1_gcd_extended_gcd;
+
 import java.util.Scanner;
 
 public class gcd {

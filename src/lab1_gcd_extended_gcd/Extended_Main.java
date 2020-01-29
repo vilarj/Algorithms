@@ -1,3 +1,4 @@
+package lab1_gcd_extended_gcd;
 
 public class Extended_Main {
     public static void main (String[] args) {
