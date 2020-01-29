@@ -25,7 +25,7 @@ public class Driver {
         }
 
         long end = System.currentTimeMillis() - beginning;
-        System.out.print("\nTimer: " + end + "\n");
+        System.out.print("\nTimer: " + end + " ms \n");
 
         /**
          * ## Bonus #1 ##
@@ -53,7 +53,7 @@ public class Driver {
         System.out.print("\nSorted List: ");
         secondSet.toArray (secondList);
         long secondEnd = System.currentTimeMillis() - secondBeginning;
-        System.out.print ("\n\nSecond Timer: " + secondEnd + "\n");
+        System.out.print ("\n\nSecond Timer: " + secondEnd + " ms \n");
         // Closing the Scanner class
         input.close();
 
@@ -64,7 +64,7 @@ public class Driver {
          * and then apply insertion sort to the whole array.
          */
 
-        System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#1**\n");
+        System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#2**\n");
 
         long start3;
         long end3;
