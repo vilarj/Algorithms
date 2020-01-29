@@ -34,40 +34,8 @@ public class Driver {
          * Record running times and describe your observations.
          */
         System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#1**\n");
-        Scanner input = new Scanner (System.in);
 
-        Integer[] secondList = new Integer [50];
-
-        System.out.print ("Original list: ");
-        // Filling the array of random integers fro 0-50
-        for (int i = 0; i < secondList.length; i++) {
-            Random random = new Random ();
-            int r = random.nextInt (50);
-
-            secondList[i] = r;
-            System.out.print (r + " ");
-        }
-
-        long secondBeginning = System.currentTimeMillis();
-        QuickSort<Integer> secondSet = new QuickSort <>(secondList, 0, secondList.length);
-        System.out.print("\nSorted List: ");
-        secondSet.toArray (secondList);
-        long secondEnd = System.currentTimeMillis() - secondBeginning;
-        System.out.print ("\n\nSecond Timer: " + secondEnd + " ms \n");
-        // Closing the Scanner class
-        input.close();
-
-        /**
-         * ## Bonus #2 ##
-         * Implement the alternative version of QuickSort as described in the slide 14 of Lec3a:
-         * stop quicksort when subarray is not larger than 4 elements,
-         * and then apply insertion sort to the whole array.
-         */
-
-        System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#2**\n");
-
-        long start3;
-        long end3;
+        long start3, end3;
 
         Integer[] sizeOneArray = new Integer[1000];
         Integer[] sizeTwoArray = new Integer[10000];
@@ -100,6 +68,15 @@ public class Driver {
         end =  System.currentTimeMillis();
         System.out.printf("10^6 Time: %d ms %n", end - start3);
 
+        /**
+         * ## Bonus #2 ##
+         * Implement the alternative version of QuickSort as described in the slide 14 of Lec3a:
+         * stop quicksort when subarray is not larger than 4 elements,
+         * and then apply insertion sort to the whole array.
+         */
+
+        System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#2**\n");
+        AlternativeQuickSort<>
     }
 
     private static void initialize(Integer[] array)
