@@ -53,7 +53,7 @@ public class Driver {
         System.out.print("\nSorted List: ");
         secondSet.toArray (secondList);
         long secondEnd = System.currentTimeMillis() - secondBeginning;
-        System.out.print ("\n\nSecond Timer: " + secondEnd);
+        System.out.print ("\n\nSecond Timer: " + secondEnd + "\n");
         // Closing the Scanner class
         input.close();
 
@@ -64,5 +64,50 @@ public class Driver {
          * and then apply insertion sort to the whole array.
          */
 
+        System.out.print ("\n**E**X**T**R**A****C**R**E**D**I**T**#1**\n");
+
+        long start3;
+        long end3;
+
+        Integer[] sizeOneArray = new Integer[1000];
+        Integer[] sizeTwoArray = new Integer[10000];
+        Integer[] sizeThreeArray = new Integer[100000];
+        Integer[] sizeFourArray = new Integer[1000000];
+
+        initialize(sizeOneArray);
+        initialize(sizeTwoArray);
+        initialize(sizeThreeArray);
+        initialize(sizeFourArray);
+
+        start3 = System.currentTimeMillis();
+        QuickSort<Integer> sorted = new QuickSort <>(sizeOneArray, 0, sizeOneArray.length);
+        end =  System.currentTimeMillis();
+
+        System.out.printf("10^3 Time: %d ms %n", end - start3);
+
+        start3 = System.currentTimeMillis();
+        sorted = new QuickSort <>(sizeTwoArray, 0, sizeTwoArray.length);
+        end =  System.currentTimeMillis();
+        System.out.printf("10^4 Time: %d ms %n", end - start3);
+
+        start3 = System.currentTimeMillis();
+        sorted = new QuickSort <>(sizeThreeArray, 0, sizeThreeArray.length);
+        end =  System.currentTimeMillis();
+        System.out.printf("10^5 Time: %d ms %n", end - start3);
+
+        start3 = System.currentTimeMillis();
+        sorted = new QuickSort <>(sizeFourArray, 0, sizeFourArray.length);
+        end =  System.currentTimeMillis();
+        System.out.printf("10^6 Time: %d ms %n", end - start3);
+
+    }
+
+    private static void initialize(Integer[] array)
+    {
+        for(int i = 0; i < array.length; i++)
+        {
+            Random rand = new Random();
+            array[i] = rand.nextInt(50);
+        }
     }
 }
