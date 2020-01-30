@@ -1,11 +1,13 @@
 package lab4_heap_radix_sort;
 
 public class heapSort <T extends Comparable <? super T> > {
+
     public heapSort (T[] list) {
         int size = list.length;
 
-        for (int i = size / 2 - 1; i >= 0; i--)
-            heapify(list, size, i);
+        for (int root = (size / 2) - 1; root >= 0; root--) {
+            heapify(list, size, root);
+        }
 
         for (int i = size - 1; i >= 0; i--) {
             T temp = list[0];
@@ -21,11 +23,8 @@ public class heapSort <T extends Comparable <? super T> > {
         int left  = (2 * root) + 1;
         int right = (2 * root) + 2;
 
-        if ( (left < size) && (list[left].compareTo(list[max]) > 0) )
-            max = left;
-
-        if ( (right < size) && (list[right].compareTo(list[max]) > 0) )
-            max = right;
+        if ( (left < size) && (list[left].compareTo(list[max]) > 0) ) { max = left; }
+        if ( (right < size) && (list[right].compareTo(list[max]) > 0) ) {max = right; }
 
         if (max != root) {
             swap(list, root, max);
