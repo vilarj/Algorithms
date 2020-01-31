@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main (String[] args) throws IOException {
-        FileWriter file_writer = new FileWriter("sorted_book");
         Reader reader = new Reader("book");
         String[] vocabulary = reader.get();
 
@@ -18,7 +17,6 @@ public class Driver {
 
         for(String word : vocabulary) {
             System.out.println(word);
-            file_writer.write(word);
         }
 
         long end = System.currentTimeMillis() - beginning;
