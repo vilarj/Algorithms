@@ -15,12 +15,10 @@ public class Driver {
         long beginning = System.currentTimeMillis();
         QuickSort<String> toSort = new QuickSort<>(vocabulary, 0, vocabulary.length);
 
-        for(String word : vocabulary) {
-            System.out.println(word);
-        }
+        toSort.toArray(vocabulary);
 
         long end = System.currentTimeMillis() - beginning;
-        System.out.print("\nTimer: " + end + " ms \n");
+        System.out.print("\nTime: " + end + "ms \n");
 
         /**
          * ## Bonus #1 ##
@@ -45,22 +43,22 @@ public class Driver {
         QuickSort<Integer> sorted = new QuickSort <>(sizeOneArray, 0, sizeOneArray.length);
         end =  System.currentTimeMillis();
 
-        System.out.printf("10^3 Time: %d ms %n", end - start3);
+        System.out.printf("10^3 Time: %dms %n", end - start3);
 
         start3 = System.currentTimeMillis();
         sorted = new QuickSort <>(sizeTwoArray, 0, sizeTwoArray.length);
         end =  System.currentTimeMillis();
-        System.out.printf("10^4 Time: %d ms %n", end - start3);
+        System.out.printf("10^4 Time: %dms %n", end - start3);
 
         start3 = System.currentTimeMillis();
         sorted = new QuickSort <>(sizeThreeArray, 0, sizeThreeArray.length);
         end =  System.currentTimeMillis();
-        System.out.printf("10^5 Time: %d ms %n", end - start3);
+        System.out.printf("10^5 Time: %dms %n", end - start3);
 
         start3 = System.currentTimeMillis();
         sorted = new QuickSort <>(sizeFourArray, 0, sizeFourArray.length);
         end =  System.currentTimeMillis();
-        System.out.printf("10^6 Time: %d ms %n", end - start3);
+        System.out.printf("10^6 Time: %dms %n", end - start3);
     }
 
     private static void initialize(Integer[] array)

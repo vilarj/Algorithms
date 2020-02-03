@@ -9,11 +9,6 @@ public class main {
         String[] vocabulary = reader.get();
         heapSort<String> toSort = new heapSort<>(vocabulary);
 
-        // Printing out the sorted words
-        for(String word : vocabulary) {
-            System.out.println(word);
-        }
-
-
+        toSort.toArray(vocabulary);
     }
 }
