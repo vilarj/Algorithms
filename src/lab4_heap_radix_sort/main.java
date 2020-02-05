@@ -10,5 +10,14 @@ public class main {
         heapSort<String> toSort = new heapSort<>(vocabulary);
 
         toSort.toArray(vocabulary);
+
+        System.out.println();
+
+        String[] arr = {"COW", "DOG", "SEA", "RUG", "ROW", "MOB", "BOX",
+                "TAB", "BAR", "EAR", "TAR", "DIG", "BIG", "TEA",
+                "NOW", "FOX", "TAN", "AIR", "WAX", "CAT"};
+
+        radixSort sort = new radixSort(arr);
+        sort.toArray(arr);
     }
 }
