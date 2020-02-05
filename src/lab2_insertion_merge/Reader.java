@@ -22,7 +22,7 @@ public class Reader
         while(fin.hasNext())
         {
             String word = fin.next();
-            word = sanitize(word);
+            word = sanitize(word.toUpperCase());
 
             if(word.length() > 1)
                 words.add(word);

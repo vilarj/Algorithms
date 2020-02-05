@@ -11,7 +11,8 @@ public class main {
 
         toSort.toArray(vocabulary);
 
-        System.out.println();
+        System.out.println("\n\nRadix Sort:");
+
 
         String[] arr = {"COW", "DOG", "SEA", "RUG", "ROW", "MOB", "BOX",
                 "TAB", "BAR", "EAR", "TAR", "DIG", "BIG", "TEA",
