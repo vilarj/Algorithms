@@ -19,9 +19,9 @@ public class heapSort <T extends Comparable <? super T> > {
     }
 
     private void heapify (T[] list, int size, int root) {
-        var max   = root;
-        var left  = (2 * root) + 1;
-        var right = (2 * root) + 2;
+        int max   = root;
+        int left  = (2 * root) + 1;
+        int right = (2 * root) + 2;
 
         if ( (left < size) && (list[left].compareTo(list[max]) > 0) ) { max = left; }
         if ( (right < size) && (list[right].compareTo(list[max]) > 0) ) {max = right; }
