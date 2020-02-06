@@ -38,7 +38,7 @@ public class heapSort <T extends Comparable <? super T> > {
         list[max] = temp;
     }
 
-    public T[] toArray (T[] list) {
+    public T[] output (T[] list) {
         int i = 1;
 
         for (T generic : list) {

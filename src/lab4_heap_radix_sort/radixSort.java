@@ -47,7 +47,7 @@ public class radixSort <T extends String> {
         }
     }
 
-    public T[] toArray (T[] list) {
+    public T[] output (T[] list) {
         for (T generic : list) {
             System.out.print (generic + " ");
         }

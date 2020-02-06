@@ -9,7 +9,7 @@ public class main {
         String[] vocabulary = reader.get();
         heapSort<String> toSort = new heapSort<>(vocabulary);
 
-        toSort.toArray(vocabulary);
+        toSort.output(vocabulary);
 
         System.out.println("\n\nRadix Sort:");
 
@@ -19,6 +19,6 @@ public class main {
                 "NOW", "FOX", "TAN", "AIR", "WAX", "CAT"};
 
         radixSort sort = new radixSort(arr);
-        sort.toArray(arr);
+        sort.output(arr);
     }
 }
