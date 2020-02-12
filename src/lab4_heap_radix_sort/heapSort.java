@@ -3,7 +3,7 @@ package lab4_heap_radix_sort;
 public class heapSort <T extends Comparable <? super T> > {
 
     public heapSort (T[] list) {
-        var size = list.length;
+        int size = list.length;
 
         for (int root = (size / 2) - 1; root >= 0; root--) {
             heapify(list, size, root);
