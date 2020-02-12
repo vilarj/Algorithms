@@ -22,7 +22,7 @@ public class main
             if((System.currentTimeMillis() - start) > duration)
             {
 
-                System.out.printf("Fibbonaci Number: %d Last 5 Digits: %d" , curFib, curFib % 1000000);
+                System.out.printf("Fibbonaci Number: %d Last 5 Digits: %d" , curFib, Math.abs(curFib % 100000));
 
                 break;
             }
