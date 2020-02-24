@@ -1,18 +1,18 @@
 package lab7_hashing;
 
 public class HDictionary<K,E> {
-    private Entry <K, E> [] dictionary;
+    private Entry <K, E>[] dictionary;
     private int size;
 
     public HDictionary(int size) {
-        if(primeNumber(size) == true) {
-            // the size of dictionary is n --> TODO: set dictionary the size of n
+        this.size = size;
+
+        if(primeNumber(size)) {
             dictionary = (Entry<K, E>[]) new Object [size];
-            this.size = size;
         }
 
         else {
-            System.out.print("Not a prime number");
+            System.out.print ("Not a prime number");
         }
     }
 
@@ -44,22 +44,28 @@ public class HDictionary<K,E> {
      * @return true
      */
     public boolean primeNumber(int n) {
-        boolean prime = true;
         int remainder = 0;
 
         for (int i = 2; i <= n - 1; i++) {
             if (n % i == 0) {remainder++;}
         }
 
-        if (remainder > 0) {return !prime;}
-        return prime;
+        return remainder <= 0;
     }
 
-    private void hashInsert(K key, E element) {
+    public void hashInsert(Entry <K,E>[] element) {
 
     }
 
-    private void hashSearch (Entry <K, E> element) {
+    public void hashSearch (Entry <K, E>[] element) {
+        for (int i = 0; i < size; i++) {
+            if (dictionary[i].getKey() == element[i].getKey()) {
+                System.out.print ("\nThe element is: " + element[i]);
+            }
 
+            else {
+                System.out.print ("\nThe element " + element[i] + " does not exist");
+            }
+        }
     }
 }

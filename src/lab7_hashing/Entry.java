@@ -17,7 +17,6 @@ public class Entry <K,E> {
     public E getElement () {
         return element;
     }
-
     public void setValue (E newElement) {
         element = newElement;
     }
