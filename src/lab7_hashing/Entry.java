@@ -20,4 +20,6 @@ public class Entry <K,E> {
     public void setValue (E newElement) {
         element = newElement;
     }
+
+
 }

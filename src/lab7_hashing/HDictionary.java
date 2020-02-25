@@ -1,7 +1,7 @@
 package lab7_hashing;
 
 public class HDictionary<K,E> {
-    private Entry <K, E>[] dictionary;
+    private Entry <K,E>[] dictionary;
     private int size;
 
     public HDictionary(int size) {
@@ -53,7 +53,7 @@ public class HDictionary<K,E> {
         return remainder <= 0;
     }
 
-    public void hashInsert(Entry <K,E>[] element) {
+    public void hashInsert (Entry <K,E>[] element) {
 
     }
 
