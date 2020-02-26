@@ -12,6 +12,12 @@ public class Name {
         this.last = last;
     }
 
+    @Override
+    public int hashCode() {
+
+        return 0;
+    }
+
     public String getFirst () {
         return first;
     }

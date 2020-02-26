@@ -1,7 +1,6 @@
 package lab7_hashing;
 
-public class Entry <K,V>
-{
+public class Entry <K,V> {
     private K key;
     private V value;
 
@@ -9,6 +8,7 @@ public class Entry <K,V>
         this.key = key;
         this.value = value;
     }
+
     // Getters
     public K getKey ()
     {
@@ -18,6 +18,10 @@ public class Entry <K,V>
     {
         return this.value;
     }
-    //TODO To String Method
 
+    @Override
+    public String toString () {
+        String output = getKey() + " " + getValue() + "\n"; // or getFirst() + " " + getLast() + "\n"
+        return output;
+    }
 }

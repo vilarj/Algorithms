@@ -22,6 +22,11 @@ public class HDictionary<K,V>
     private int hash (K key, int i) {
         int m = size;
         int c = key.hashCode();
+
+        if (m == 1) {
+            return (h1(c) + i * h2(c)); // special case: size == 1
+        }
+
         return (h1(c) + i * h2(c))%m;
     }
 
@@ -32,6 +37,11 @@ public class HDictionary<K,V>
 
     private int h2 (int k) {
         int m = size;
+
+        if (m == 1) { // special case: size == 1
+            return (k % (m));
+        }
+
         return (k % (m - 1));
     }
 
@@ -68,6 +78,4 @@ public class HDictionary<K,V>
         int index = hash(key, hashCode);
         return this.table[index];
     }
-
-
 }
