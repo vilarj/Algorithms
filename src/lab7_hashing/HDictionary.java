@@ -8,11 +8,11 @@ public class HDictionary<K,E> {
         this.size = size;
 
         if(primeNumber(size)) {
-            dictionary = (Entry<K, E>[]) new Object [size];
+            dictionary = new Entry[size];
         }
 
         else {
-            System.out.print ("Not a prime number");
+            dictionary = new Entry[size + 1]; // make the size into a primer number
         }
     }
 
@@ -49,7 +49,6 @@ public class HDictionary<K,E> {
         for (int i = 2; i <= n - 1; i++) {
             if (n % i == 0) {remainder++;}
         }
-
         return remainder <= 0;
     }
 
