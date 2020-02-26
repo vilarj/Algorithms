@@ -1,25 +1,23 @@
 package lab7_hashing;
 
-public class Entry <K,E> {
+public class Entry <K,V>
+{
     private K key;
-    private E element;
+    private V value;
 
-    public Entry(K key, E element) {
+    public Entry(K key, V value) {
         this.key = key;
-        this.element = element;
+        this.value = value;
     }
-
-    // Getters and Setters
-    public K getKey () {
-        return key;
+    // Getters
+    public K getKey ()
+    {
+        return this.key;
     }
-
-    public E getElement () {
-        return element;
+    public V getValue()
+    {
+        return this.value;
     }
-    public void setValue (E newElement) {
-        element = newElement;
-    }
-
+    //TODO To String Method
 
 }

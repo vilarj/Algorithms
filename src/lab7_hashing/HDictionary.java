@@ -1,18 +1,20 @@
 package lab7_hashing;
 
-public class HDictionary<K,E> {
-    private Entry <K,E>[] dictionary;
+public class HDictionary<K,V>
+{
+    private Entry <K,V>[] table;
     private int size;
 
     public HDictionary(int size) {
         this.size = size;
 
         if(primeNumber(size)) {
-            dictionary = new Entry[size];
+
+            table = new Entry[size];
         }
 
         else {
-            dictionary = new Entry[size + 1]; // make the size into a primer number
+            table = new Entry[size + 1];
         }
     }
 
@@ -49,22 +51,23 @@ public class HDictionary<K,E> {
         for (int i = 2; i <= n - 1; i++) {
             if (n % i == 0) {remainder++;}
         }
+
         return remainder <= 0;
     }
 
-    public void hashInsert (Entry <K,E>[] element) {
+    public void Insert (Entry <K, V> entry)
+    {
+        int hashCode = Math.abs(entry.getKey().hashCode());
+        int index = hash(entry.getKey(), hashCode);
+        this.table[index] = entry;
 
     }
-
-    public void hashSearch (Entry <K, E>[] element) {
-        for (int i = 0; i < size; i++) {
-            if (dictionary[i].getKey() == element[i].getKey()) {
-                System.out.print ("\nThe element is: " + element[i]);
-            }
-
-            else {
-                System.out.print ("\nThe element " + element[i] + " does not exist");
-            }
-        }
+    public Entry Search(K key)
+    {
+        int hashCode = Math.abs(key.hashCode());
+        int index = hash(key, hashCode);
+        return this.table[index];
     }
+
+
 }
