@@ -29,14 +29,20 @@ public class Test {
 
     public static void getFile () {
         System.out.println("\n====== Part C ======");
+        int lineCount = 0;
+
         try (Scanner read = new Scanner(new File("movies.txt"))) {
             String message = "";
 
             while (read.hasNextLine()) {
                 message = read.nextLine();
-                System.out.print (message);
-                System.out.println();
+                System.out.println (message);
+                lineCount++;
             }
+
+            // #4 TODO: Read file again and add values to the dictionary
+            HDictionary<String, String> dic = new HDictionary<>(lineCount);
+
         }
         catch (FileNotFoundException ex) {
             ex.getStackTrace();
