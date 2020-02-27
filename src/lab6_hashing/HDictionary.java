@@ -1,6 +1,6 @@
 package lab6_hashing;
 
-public class HDictionary<K,V> {
+public class HDictionary <K,V> {
     private Entry <K,V>[] table;
     private int size;
 
