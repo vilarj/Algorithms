@@ -8,14 +8,12 @@ public class Name {
     }
 
     public Name (String first, String last) {
-        this.first = first;
-        this.last = last;
+        this.fullName = first + " " + last;
     }
 
     @Override
     public int hashCode() {
-
-        return 0;
+        return (this.fullName.hashCode());
     }
 
     public String getFirst () {
