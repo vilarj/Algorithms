@@ -68,14 +68,14 @@ public class HDictionary<K,V>
     public void Insert (Entry <K, V> entry)
     {
         int hashCode = Math.abs(entry.getKey().hashCode());
-        int index = hash(entry.getKey(), hashCode);
+        int index = Math.abs(hash(entry.getKey(), hashCode));
         this.table[index] = entry;
 
     }
     public Entry Search(K key)
     {
         int hashCode = Math.abs(key.hashCode());
-        int index = hash(key, hashCode);
+        int index = Math.abs(hash(key, hashCode));
         return this.table[index];
     }
 }

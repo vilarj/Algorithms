@@ -24,28 +24,57 @@ public class Test {
         System.out.println(dic.Search("Toyota").getKey());
 
         // Part C
-        getFile();
+        System.out.println("\n====== Part C ======");
+        File file = new File("/Users/mainframe/Documents/Algorithms/movies.txt");
+        int lineCount = getLineCount(file);
+        System.out.printf("Line Count: %d%n", lineCount);
+        System.out.println(addToDictionary(lineCount, file).Search("Harvard Film Archive"));
     }
 
-    public static void getFile () {
-        System.out.println("\n====== Part C ======");
+    public static int getLineCount(File file)
+    {
         int lineCount = 0;
 
-        try (Scanner read = new Scanner(new File("movies.txt"))) {
-            String message = "";
 
-            while (read.hasNextLine()) {
-                message = read.nextLine();
-                System.out.println (message);
+        try (Scanner read = new Scanner(file))
+        {
+            while (read.hasNextLine())
+            {
+                read.nextLine();
                 lineCount++;
             }
+            read.close();
 
-            // #4 TODO: Read file again and add values to the dictionary
-            HDictionary<String, String> dic = new HDictionary<>(lineCount);
+        }
+
+        catch (FileNotFoundException ex) {
+            ex.getStackTrace();
+        }
+
+
+        return lineCount;
+    }
+    public static HDictionary addToDictionary(int size, File file)
+    {
+        HDictionary dictionary = new HDictionary(size);
+
+        try (Scanner read = new Scanner(file))
+        {
+            while (read.hasNextLine()) {
+                String line = read.nextLine();
+
+                int phoneNumberIndex = line.length() - 12;
+                String key = line.substring(0, phoneNumberIndex);
+                String value = line.substring(phoneNumberIndex);
+                dictionary.Insert(new Entry(key, value));
+            }
 
         }
         catch (FileNotFoundException ex) {
             ex.getStackTrace();
         }
+
+        return dictionary;
     }
+
 }
