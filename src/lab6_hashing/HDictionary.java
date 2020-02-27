@@ -1,4 +1,4 @@
-package lab7_hashing;
+package lab6_hashing;
 
 public class HDictionary<K,V>
 {

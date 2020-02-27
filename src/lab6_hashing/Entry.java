@@ -1,4 +1,4 @@
-package lab7_hashing;
+package lab6_hashing;
 
 public class Entry <K,V> {
     private K key;
