@@ -1,7 +1,6 @@
 package lab6_hashing;
 
-public class HDictionary<K,V>
-{
+public class HDictionary<K,V> {
     private Entry <K,V>[] table;
     private int size;
 
@@ -65,14 +64,14 @@ public class HDictionary<K,V>
         return remainder <= 0;
     }
 
-    public void Insert (Entry <K, V> entry)
+    public void Hash_Insert (Entry <K, V> entry)
     {
         int hashCode = Math.abs(entry.getKey().hashCode());
         int index = Math.abs(hash(entry.getKey(), hashCode));
         this.table[index] = entry;
 
     }
-    public Entry Search(K key)
+    public Entry Hash_Search (K key)
     {
         int hashCode = Math.abs(key.hashCode());
         int index = Math.abs(hash(key, hashCode));
