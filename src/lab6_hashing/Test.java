@@ -2,33 +2,51 @@ package lab6_hashing;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Dictionary;
 import java.util.Scanner;
 
 public class Test {
     public static void main (String[] args) throws FileNotFoundException {
-        HDictionary<String, String> dic = new HDictionary<>(1);
+        int dictionarySize;
+        HDictionary<String, String> dic = new HDictionary<>(3);
         Entry car = new Entry<>("Toyota", "Red");
-//        Entry car2 = new Entry<>("Honda", "Blue");
-//        Entry car3 = new Entry<>("Benz", "White");
+        Entry car2 = new Entry<>("Honda", "Blue");
+        Entry car3 = new Entry<>("Benz", "White");
 //        Entry car4 = new Entry<>("Toyota", "Red");
 //        Entry car5 = new Entry<>("Honda", "Blue");
-//        Entry car6 = new Entry<>("Benz", "White");
+//        Entry car6 = new Entry<>("Benz", "White");n
 
-        dic.Insert(car);
-//        dic.Insert(car2);
-//        dic.Insert(car3);
+        dic.Hash_Insert(car);
+        dic.Hash_Insert(car2);
+        dic.Hash_Insert(car3);
 //        dic.Insert(car4);
 //        dic.Insert(car5);
 //        dic.Insert(car6);
-        System.out.println(dic.Search("Toyota").getValue());
-        System.out.println(dic.Search("Toyota").getKey());
+        System.out.println(dic.Hash_Search("Toyota"));
+        System.out.println(dic.Hash_Search("Benz"));
+        System.out.println(dic.Hash_Search("123"));
 
         // Part C
         System.out.println("\n====== Part C ======");
+        HDictionary dictionary;
         File file = new File("/Users/mainframe/Documents/Algorithms/movies.txt");
-        int lineCount = getLineCount(file);
-        System.out.printf("Line Count: %d%n", lineCount);
-        System.out.println(addToDictionary(lineCount, file).Search("Harvard Film Archive"));
+        dictionarySize = getLineCount(file);
+        dictionary = addToDictionary(dictionarySize, file);
+
+        String[] theaters = new String[] {"Arclight Cinemas Boston", "Only Marver Movies", "Museum Of Science", "Meme Central", "Amc Theatre", "Regent Theatre"};
+        for(String theater : theaters)
+        {
+            Entry search = dictionary.Hash_Search(theater);
+
+            if(search != null && search.getValue() != null)
+                System.out.printf("%s exist %s %n", theater, search.getValue());
+            else
+                System.out.printf("%s does not exist %n", theater);
+
+
+
+
+        }
     }
 
     public static int getLineCount(File file)
@@ -64,9 +82,9 @@ public class Test {
                 String line = read.nextLine();
 
                 int phoneNumberIndex = line.length() - 12;
-                String key = line.substring(0, phoneNumberIndex);
+                String key = line.substring(0, phoneNumberIndex - 1);
                 String value = line.substring(phoneNumberIndex);
-                dictionary.Insert(new Entry(key, value));
+                dictionary.Hash_Insert(new Entry(key, value));
             }
 
         }

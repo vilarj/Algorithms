@@ -2,41 +2,32 @@ package lab6_hashing;
 
 public class HDictionary <K,V> {
     private Entry <K,V>[] table;
-    private int size;
 
-    public HDictionary(int size) {
-        this.size = size;
+    public HDictionary(int size)
+    {
+        table = new Entry[nextPrime(size)];
 
-        if(primeNumber(size)) {
-
-            table = new Entry[size];
-        }
-
-        else {
-            table = new Entry[size + 1];
-        }
     }
 
     // ** Part A
     private int hash (K key, int i) {
-        int m = size;
+        int m = table.length;
         int c = key.hashCode();
 
         if (m == 1) {
             return (h1(c) + i * h2(c)); // special case: size == 1
         }
 
-        return (h1(c) + i * h2(c))%m;
+        return (h1(c) + i * h2(c)) % m;
     }
 
     private int h1 ( int k) {
-        int m = size;
+        int m = table.length;
         return (k + (m/2) ) % m;
     }
 
     private int h2 (int k) {
-        int m = size;
-
+        int m = table.length;
         if (m == 1) { // special case: size == 1
             return (k % (m));
         }
@@ -54,7 +45,7 @@ public class HDictionary <K,V> {
      * @param n
      * @return true
      */
-    public boolean primeNumber(int n) {
+    public boolean isPrime(int n) {
         int remainder = 0;
 
         for (int i = 2; i <= n - 1; i++) {
@@ -63,18 +54,51 @@ public class HDictionary <K,V> {
 
         return remainder <= 0;
     }
+    int nextPrime(int n)
+    {
+        int prime = n;
+        boolean found = false;
+
+        if (n <= 1)
+            return 2;
+
+        while (!found)
+        {
+            prime++;
+
+            if (isPrime(prime))
+                found = true;
+        }
+
+        return prime;
+    }
 
     public void Hash_Insert (Entry <K, V> entry)
     {
         int hashCode = Math.abs(entry.getKey().hashCode());
-        int index = Math.abs(hash(entry.getKey(), hashCode));
+        int index = hash(entry.getKey(), hashCode);
+        index = Math.abs(index);
         this.table[index] = entry;
 
     }
     public Entry Hash_Search (K key)
     {
+        Entry result;
         int hashCode = Math.abs(key.hashCode());
-        int index = Math.abs(hash(key, hashCode));
-        return this.table[index];
+        int index = hash(key, hashCode);
+        index = Math.abs(index);
+        result = this.table[index];
+
+        if(result != null && !key.equals(result.getKey()))
+            return new Entry(null, null);
+
+        return result;
+      //  System.out.println(result.getKey());
+      //  if(result.getKey().equals(key))
+           // return result;
+       // else
+            //return null;
+
+
     }
 }
