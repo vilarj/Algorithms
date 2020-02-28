@@ -12,16 +12,11 @@ public class Test {
         Entry car = new Entry<>("Toyota", "Red");
         Entry car2 = new Entry<>("Honda", "Blue");
         Entry car3 = new Entry<>("Benz", "White");
-//        Entry car4 = new Entry<>("Toyota", "Red");
-//        Entry car5 = new Entry<>("Honda", "Blue");
-//        Entry car6 = new Entry<>("Benz", "White");n
 
         dic.Hash_Insert(car);
         dic.Hash_Insert(car2);
         dic.Hash_Insert(car3);
-//        dic.Insert(car4);
-//        dic.Insert(car5);
-//        dic.Insert(car6);
+
         System.out.println(dic.Hash_Search("Toyota"));
         System.out.println(dic.Hash_Search("Benz"));
         System.out.println(dic.Hash_Search("123"));
@@ -42,17 +37,12 @@ public class Test {
                 System.out.printf("%s exist %s %n", theater, search.getValue());
             else
                 System.out.printf("%s does not exist %n", theater);
-
-
-
-
         }
     }
 
     public static int getLineCount(File file)
     {
         int lineCount = 0;
-
 
         try (Scanner read = new Scanner(file))
         {
@@ -62,22 +52,17 @@ public class Test {
                 lineCount++;
             }
             read.close();
-
         }
-
         catch (FileNotFoundException ex) {
             ex.getStackTrace();
         }
-
-
         return lineCount;
     }
-    public static HDictionary addToDictionary(int size, File file)
-    {
+
+    public static HDictionary addToDictionary(int size, File file) {
         HDictionary dictionary = new HDictionary(size);
 
-        try (Scanner read = new Scanner(file))
-        {
+        try (Scanner read = new Scanner(file)) {
             while (read.hasNextLine()) {
                 String line = read.nextLine();
 
@@ -86,7 +71,6 @@ public class Test {
                 String value = line.substring(phoneNumberIndex);
                 dictionary.Hash_Insert(new Entry(key, value));
             }
-
         }
         catch (FileNotFoundException ex) {
             ex.getStackTrace();
@@ -94,5 +78,4 @@ public class Test {
 
         return dictionary;
     }
-
 }

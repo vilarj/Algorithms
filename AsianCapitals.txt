@@ -1,0 +1,40 @@
+Kabul
+Yerevan
+Manama
+Dhaka
+Thimphu
+Bandar Seri Begawan
+Phnom Penh
+Beijing
+Tbilisi
+New Delhi
+Jakarta
+Tehran
+Baghdad
+Jerusalem
+Tokyo
+Amman
+Nur_Sultan
+Bishkek
+Vientiane
+Beirut
+Kuala Lumpur
+Ulaanbaatar
+Naypyidaw
+Kathmandu
+Pyongyang
+Islamabad
+Manila
+Riyad
+Singapore
+Sri Jayawardenepura Kotte
+Damascus
+Taipei
+Dushanbe
+Bangkok
+Ankara
+Ashgabat
+Abu Dhabi
+Tashkent
+Hanoi
+Sana'a
