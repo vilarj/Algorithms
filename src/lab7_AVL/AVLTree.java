@@ -6,13 +6,10 @@ import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class AVLTree < T extends Comparable <? super T>> {
-
     public AVLNode root;
-
     public AVLTree () {
         root = null;
     }
-
     public void setRoot (AVLNode rootNode) {
         root = rootNode;
     }
@@ -43,8 +40,20 @@ public class AVLTree < T extends Comparable <? super T>> {
 
     public boolean contains (T entry) {
         // implements AVLSearch algorithm
-        return true;
+        return contains(root, entry);
+    }
 
+    private boolean contains (AVLNode node, T entry) {
+        int compare = entry.compareTo(node.getData()); // comparing current entry in the root
+
+        if (isEmpty()) // tree is empty - false
+            return false;
+        if (compare < 0) // go into the left subtree
+            return contains(root.left, entry);
+        if (compare > 0) // go into the right subtree
+            return contains(node.right, entry);
+
+        return true;
     }
 
     private enum LeftRight {
@@ -64,7 +73,6 @@ public class AVLTree < T extends Comparable <? super T>> {
             return false;  // should be fixed
 
         return delete (node);
-
     }
 
     public void insert (T entry ) {
@@ -74,6 +82,7 @@ public class AVLTree < T extends Comparable <? super T>> {
 
         if (r != null) {
             int balance = r.getLeftHeight() - r.getRightHeight();
+
             if (balance != 2 && balance != -2)
                 throw new IllegalStateException();
             LeftRight rotation = getRotation (toAdd, r);
@@ -97,9 +106,9 @@ public class AVLTree < T extends Comparable <? super T>> {
         }
     }
 
-
     private LeftRight getRotation (AVLNode node, AVLNode nail) {
         // to implement
+
         return null;  // should be fixed
     }
 
@@ -138,6 +147,7 @@ public class AVLTree < T extends Comparable <? super T>> {
             height = 1;
             leftHeight = rightHeight = 0;
         }
+
         protected T getData() {
             return data;
         }
@@ -145,6 +155,7 @@ public class AVLTree < T extends Comparable <? super T>> {
         protected void setData (T data) {
             this.data = data;
         }
+
         protected AVLNode getParent () {
             return parent;
         }
@@ -202,8 +213,7 @@ public class AVLTree < T extends Comparable <? super T>> {
         }
 
         protected int getNumberOfNodes () {
-            // to implement
-            return 0; // should be fixed
+            return root.getHeight();
         }
 
         protected void resetHeights() {
@@ -257,7 +267,6 @@ public class AVLTree < T extends Comparable <? super T>> {
                 nodeQueue.add(right);
             return item;
         }
-
     }
 
     private class InOrderIterator implements Iterator <T> {
@@ -291,7 +300,6 @@ public class AVLTree < T extends Comparable <? super T>> {
                 throw new NoSuchElementException ();
             return item;
         }
-
     }
 
     public Iterator <T> getInorderIterator () {

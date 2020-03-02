@@ -20,7 +20,6 @@ public class Test {
         nameTree.insert("George");
         nameTree.insert("Harry");
 
-
         System.out.println("height: " + nameTree.getHeight());
         System.out.println("real height: " + nameTree.getRealHeight());
 
@@ -54,7 +53,6 @@ public class Test {
             while (capIn.hasNext())
                 System.out.println (capIn.next());
 
-
             System.out.println ("Heights are " + capitals.getHeight()
                     + "," + capitals.getRealHeight()) ;
 
@@ -71,7 +69,5 @@ public class Test {
         catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
-
     }
-
 }
