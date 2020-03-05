@@ -39,7 +39,6 @@ public class AVLTree < T extends Comparable <? super T>> {
     }
 
     public boolean contains (T entry) {
-        // implements AVLSearch algorithm
         return contains(root, entry);
     }
 
@@ -49,10 +48,9 @@ public class AVLTree < T extends Comparable <? super T>> {
         if (isEmpty()) // tree is empty - false
             return false;
         if (compare < 0) // go into the left subtree
-            return contains(root.left, entry);
+            return contains(node.left, entry);
         if (compare > 0) // go into the right subtree
             return contains(node.right, entry);
-
         return true;
     }
 
@@ -77,7 +75,16 @@ public class AVLTree < T extends Comparable <? super T>> {
 
     public void insert (T entry ) {
         AVLNode toAdd = new AVLNode (entry);
-        // implement TreeInsert
+
+        if (root == null) {
+            root = toAdd;
+        }
+
+        else {
+            //TODO: NOT done yet
+            toAdd = root;
+        }
+
         AVLNode r = updateHeights (toAdd);
 
         if (r != null) {
@@ -101,14 +108,14 @@ public class AVLTree < T extends Comparable <? super T>> {
                     rrRotate (r);
                     break;
                 default:
-                    throw new IllegalStateException ();
+                    return;
+                    //throw new IllegalStateException ();
             }
         }
     }
 
     private LeftRight getRotation (AVLNode node, AVLNode nail) {
         // to implement
-
         return null;  // should be fixed
     }
 
