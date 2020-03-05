@@ -73,17 +73,78 @@ public class AVLTree < T extends Comparable <? super T>> {
         return delete (node);
     }
 
-    public void insert (T entry ) {
+    /**
+     * 		if (node.data > data) {
+     * 			node.left = insert(node.left, data);
+     *        } else {
+     * 			node.right = insert(node.right, data);
+     *        }
+     * 		// update the node height
+     * 		node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+     *
+     * 		int balDiff = getBalance(node);
+     *
+     * 		// Left Rotate
+     * 		if (balDiff > 1 && data < node.left.data) {
+     * 			return rightRotate(node);
+     *        }
+     *
+     * 		// Right Rotate
+     * 		if (balDiff < -1 && data > node.right.data) {
+     * 			return leftRotate(node);
+     *        }
+     *
+     * 		// Left Right Rotate
+     * 		if (balDiff > 1 && data > node.left.data) {
+     * 			node.left = leftRotate(node.left);
+     * 			return rightRotate(node);
+     *        }
+     *
+     * 		// Right Left Rotate
+     * 		if (balDiff < -1 && data < node.right.data) {
+     * 			node.right = rightRotate(node.right);
+     * 			return leftRotate(node);
+     *        }
+     *
+     * 		return node;
+     *
+     *  private AVLNode insert(int x, AVLNode t)
+     *      {
+     *          if (t == null)
+     *              t = new AVLNode(x);
+     *          else if (x < t.data)
+     *          {
+     *              t.left = insert( x, t.left );
+     *              if( height( t.left ) - height( t.right ) == 2 )
+     *                  if( x < t.left.data )
+     *                      t = rotateWithLeftChild( t );
+     *                  else
+     *                      t = doubleWithLeftChild( t );
+     *          }
+     *          else if( x > t.data )
+     *          {
+     *              t.right = insert( x, t.right );
+     *              if( height( t.right ) - height( t.left ) == 2 )
+     *                  if( x > t.right.data)
+     *                      t = rotateWithRightChild( t );
+     *                  else
+     *                      t = doubleWithRightChild( t );
+     *          }
+     *          else
+     *            ;  // Duplicate; do nothing
+     *          t.height = max( height( t.left ), height( t.right ) ) + 1;
+     *          return t;
+     *      }
+     * @param entry
+     */
+    public void insert (T entry) {
         AVLNode toAdd = new AVLNode (entry);
 
         if (root == null) {
             root = toAdd;
         }
 
-        else {
-            //TODO: NOT done yet
-            toAdd = root;
-        }
+        insert(toAdd, entry);
 
         AVLNode r = updateHeights (toAdd);
 
@@ -111,6 +172,38 @@ public class AVLTree < T extends Comparable <? super T>> {
                     return;
                     //throw new IllegalStateException ();
             }
+        }
+    }
+
+    public void insert (AVLNode t, T entry) {
+        AVLNode z = new AVLNode(entry);
+        AVLNode y, x;
+
+        y = null;
+        x = t;
+
+        while (x != null) {
+            y = x;
+
+            if (z.data < x.data) {
+                x = x.left;
+            }
+            else {
+                x = x.right;
+            }
+        }
+        z = y;
+
+        if (y == null) {
+            root = z;
+        }
+
+        else if (z.data < y.data) {
+            y.left = z;
+        }
+
+        else {
+            y.right = z;
         }
     }
 
@@ -229,7 +322,7 @@ public class AVLTree < T extends Comparable <? super T>> {
             computeHeight ();
         }
 
-        protected AVLNode getSuccessor () {
+        protected AVL getSuccessor () {
             // to implement; needed for delete()
             return null; // should be fixed
         }

@@ -7,20 +7,12 @@ public class Fibonacci {
         if (n == 2) {return 2;}
         else{return recursive(n - 1) + recursive(n - 2);}
     }
-    public static int iterative(int n)
-    {
-//        int curFib = 1;
-//        int prevFib = 1;
-//        for(int i=2; i<n; i++)
-//        {
-//            int temp = curFib;
-//            curFib += prevFib;
-//            prevFib = temp;
-//        }
-//        return curFib;
-        /**
-         * Another way of getting the last 5 digits
-         */
+
+    /**
+     * Another way of getting the last 5 digits
+     */
+    public static int iterative(int n) {
+
         int f1 = 0, f2 = 1, f3, c = 0;
 
         do {
