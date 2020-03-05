@@ -73,78 +73,14 @@ public class AVLTree < T extends Comparable <? super T>> {
         return delete (node);
     }
 
-    /**
-     * 		if (node.data > data) {
-     * 			node.left = insert(node.left, data);
-     *        } else {
-     * 			node.right = insert(node.right, data);
-     *        }
-     * 		// update the node height
-     * 		node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
-     *
-     * 		int balDiff = getBalance(node);
-     *
-     * 		// Left Rotate
-     * 		if (balDiff > 1 && data < node.left.data) {
-     * 			return rightRotate(node);
-     *        }
-     *
-     * 		// Right Rotate
-     * 		if (balDiff < -1 && data > node.right.data) {
-     * 			return leftRotate(node);
-     *        }
-     *
-     * 		// Left Right Rotate
-     * 		if (balDiff > 1 && data > node.left.data) {
-     * 			node.left = leftRotate(node.left);
-     * 			return rightRotate(node);
-     *        }
-     *
-     * 		// Right Left Rotate
-     * 		if (balDiff < -1 && data < node.right.data) {
-     * 			node.right = rightRotate(node.right);
-     * 			return leftRotate(node);
-     *        }
-     *
-     * 		return node;
-     *
-     *  private AVLNode insert(int x, AVLNode t)
-     *      {
-     *          if (t == null)
-     *              t = new AVLNode(x);
-     *          else if (x < t.data)
-     *          {
-     *              t.left = insert( x, t.left );
-     *              if( height( t.left ) - height( t.right ) == 2 )
-     *                  if( x < t.left.data )
-     *                      t = rotateWithLeftChild( t );
-     *                  else
-     *                      t = doubleWithLeftChild( t );
-     *          }
-     *          else if( x > t.data )
-     *          {
-     *              t.right = insert( x, t.right );
-     *              if( height( t.right ) - height( t.left ) == 2 )
-     *                  if( x > t.right.data)
-     *                      t = rotateWithRightChild( t );
-     *                  else
-     *                      t = doubleWithRightChild( t );
-     *          }
-     *          else
-     *            ;  // Duplicate; do nothing
-     *          t.height = max( height( t.left ), height( t.right ) ) + 1;
-     *          return t;
-     *      }
-     * @param entry
-     */
     public void insert (T entry) {
         AVLNode toAdd = new AVLNode (entry);
 
         if (root == null) {
-            root = toAdd;
+            root = toAdd; // new root
         }
 
-        insert(toAdd, entry);
+        insert(toAdd, entry); // inserting
 
         AVLNode r = updateHeights (toAdd);
 
@@ -185,7 +121,7 @@ public class AVLTree < T extends Comparable <? super T>> {
         while (x != null) {
             y = x;
 
-            if (z.data < x.data) {
+            if (z.data.compareTo(x.data) < 0) {
                 x = x.left;
             }
             else {
@@ -194,17 +130,10 @@ public class AVLTree < T extends Comparable <? super T>> {
         }
         z = y;
 
-        if (y == null) {
-            root = z;
-        }
+        if (y == null) { root = z; }
 
-        else if (z.data < y.data) {
-            y.left = z;
-        }
-
-        else {
-            y.right = z;
-        }
+        else if (z.data.compareTo(y.data) > 0) { y.left = z; }
+        else { y.right = z; }
     }
 
     private LeftRight getRotation (AVLNode node, AVLNode nail) {
@@ -322,8 +251,31 @@ public class AVLTree < T extends Comparable <? super T>> {
             computeHeight ();
         }
 
-        protected AVL getSuccessor () {
+        private AVLNode Minimun (AVLNode tree, T k) {
+            return min (tree.left, k);
+        }
+
+        private AVLNode min (AVLNode x, T k) {
+            while (x.left != null) {
+                x = x.left;
+            }
+            return x;
+        }
+
+        private AVLNode Maximun (AVLNode tree, T k) {
+            return max (tree.right, k);
+        }
+
+        private AVLNode max (AVLNode x, T k) {
+            while (x.right != null) {
+                x = x.right;
+            }
+            return x;
+        }
+
+        protected AVLNode getSuccessor () {
             // to implement; needed for delete()
+
             return null; // should be fixed
         }
 
