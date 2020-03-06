@@ -58,7 +58,6 @@ public class AVLTree < T extends Comparable <? super T>> {
         LL, LR, RL, RR
     }
 
-
     private boolean delete (AVLNode node) {
         // to implement; do rotation only for extra credit if you can
         return true;
@@ -136,11 +135,30 @@ public class AVLTree < T extends Comparable <? super T>> {
         else { y.right = z; }
     }
 
+    private AVLNode leftRotation (AVLNode node) {
+        AVLNode l_parent = node.right;
+        node.right = l_parent.left;
+        l_parent.left = node;
+
+        updateHeights(node);
+        updateHeights(l_parent);
+
+        return l_parent;
+    }
+
+    private AVLNode rightRotation (AVLNode node) {
+        AVLNode r_parent = node.left;
+        node.left = r_parent.right;
+        r_parent.right = node;
+
+        updateHeights(node);
+        updateHeights(r_parent);
+
+        return r_parent;
+    }
+
     private LeftRight getRotation (AVLNode node, AVLNode nail) {
         return null;
-      //  AVLNode entry = (AVLNode)node.data;
-
-
     }
 
     private AVLNode updateHeights (AVLNode node) {
@@ -187,9 +205,8 @@ public class AVLTree < T extends Comparable <? super T>> {
             p.resetHeights();
             updateHeights(p);
         }
-
-
     }
+
     private void rrRotate (AVLNode r) {
         AVLNode c = r.left;
         r.left = c.right;
@@ -206,7 +223,6 @@ public class AVLTree < T extends Comparable <? super T>> {
             p.resetHeights();
             updateHeights(p);
         }
-
     }
 
     private void lrRotate (AVLNode r) {
