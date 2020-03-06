@@ -137,28 +137,117 @@ public class AVLTree < T extends Comparable <? super T>> {
     }
 
     private LeftRight getRotation (AVLNode node, AVLNode nail) {
-        // to implement
-        return null;  // should be fixed
+        return null;
+      //  AVLNode entry = (AVLNode)node.data;
+
+
     }
 
     private AVLNode updateHeights (AVLNode node) {
-        // to implement
-        return null;  // should be fixed
+        AVLNode p = node.parent;
+        int oldHeight = 0; // not sure how to declare it
+        int rightHeight;
+        int leftHeight;
+        while(p != null && oldHeight != p.getHeight())
+        {
+            oldHeight = p.height;
+            if(node.isLeftChild())
+            {
+                rightHeight = p.rightHeight;
+                p.height = Math.max(node.height + 1, rightHeight);
+            }
+            else
+            {
+                leftHeight = p.leftHeight;
+                p.height = Math.max(node.height + 1, leftHeight);
+            }
+            if(p.height == oldHeight)
+                break;
+            node = p;
+            p = node.parent;
+
+        }
+        return node;
     }
 
     private void llRotate (AVLNode r) {
-        // to implement
+        AVLNode c = r.left;
+
+        r.right = r;
+        c.left = r;
+        r.parent = c;
+
+        r.resetHeights();
+        c.resetHeights();
+
+        AVLNode p = c.parent;
+
+        if(p != null)
+        {
+            p.resetHeights();
+            updateHeights(p);
+        }
+
+
     }
     private void rrRotate (AVLNode r) {
-        // to implement
+        AVLNode c = r.left;
+        r.left = c.right;
+        c.right = r;
+        r.parent = c;
+
+        r.resetHeights();
+        c.resetHeights();
+
+        AVLNode p = r.parent;
+
+        if(p != null)
+        {
+            p.resetHeights();
+            updateHeights(p);
+        }
+
     }
 
     private void lrRotate (AVLNode r) {
-        // to implement
+        AVLNode p = r.parent;
+        AVLNode c = r.left;
+        AVLNode g = c.right;
+
+        r.left = g.right;
+        c.right = g.left;
+        g.left = c;
+
+        r.resetHeights();
+        c.resetHeights();
+        g.resetHeights();
+
+        if(p != null)
+        {
+            p.resetHeights();
+            updateHeights(p);
+        }
     }
 
     private void rlRotate (AVLNode r) {
-        // to implement
+        AVLNode p = r.parent;
+        AVLNode c = r.right;
+        AVLNode g = c.left;
+
+        r.right = g.left;
+        c.left = g.right;
+        g.right = c;
+        g.left = r;
+
+        c.resetHeights();
+        r.resetHeights();
+
+
+        if(g.parent != null)
+        {
+            p.resetHeights();
+            updateHeights(g.parent);
+        }
     }
 
     private class AVLNode {
