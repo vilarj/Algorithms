@@ -5,18 +5,23 @@ import java.util.Scanner;
 public class A {
     public static void main (String[] args) {
         Scanner input = new Scanner(System.in);
-        int[][] array = {{0, -1, 0, 1, 0, 0}, {1, 0, 0, -1, 1, 0}, {0, 1, 0, -1, 1, 0}, {0, 0, 0, 1, 0, 1}, {-1, -1, -1, 0, 1, 0}};
+        int[][] array = { // Based on the diagram: -1 -> unable to collect, 0 -> empty, 1 -> able to collect
+                {0, -1, 0, 1, 0, 0},
+                {1, 0, 0, -1, 1, 0},
+                {0, 1, 0, -1, 1, 0},
+                {0, 0, 0, 1, 0, 1},
+                {-1, -1, -1, 0, 1, 0}
+        };
 
         System.out.print ("Longest Path: " + Collector(5, 6, array) );
 
+        // Closing the Scanner class
         input.close();
     }
 
     public static int Collector (int rows, int columns, int[][] array) {
         int[][] position = new int [rows][columns];
         int i = 1, j = 1, k;
-
-        position[0][0] = array[0][0];
 
         while ( (i < rows) && (array[i][0] != -1) ) {
             position[i][0] = position[i-1][0] + array[i][0]; // find the location of the coin
