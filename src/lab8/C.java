@@ -102,7 +102,5 @@ public class C {
         System.out.print(change[0] + " coins: ");
         for (int i = 1; i < change.length; i ++)
             System.out.print(change[i] + " ");
-        System.out.println();
     }
-
 }
