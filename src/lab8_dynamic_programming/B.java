@@ -1,5 +1,7 @@
 package lab8_dynamic_programming;
 
+import javax.swing.JOptionPane;
+
 public class B {
     private static final int MIN_INTEGER = Integer.MIN_VALUE;
 
@@ -22,17 +24,20 @@ public class B {
         }
 
         for (int i = 0; i < length; i++) {
-            maxPrice = Math.max (maxPrice, list[i] + CutRod(length - i - 1, list));
+            maxPrice = Math.max (maxPrice, list[i] + CutRod((length - i) - 1, list));
         }
         return maxPrice;
     }
 
     public static void main (String[] args) {
-        int[] list = {1, 5, 7, 8, 10, 16, 18,	19,	25,	26,	30,	38,	46,	41,	50,	61,	70,	75,	80,	86};
+        int[] list = {1, 5, 7, 8, 10, 16, 18, 19, 25, 26, 30, 38, 46, 41, 50, 61, 70, 75, 80, 86};
 
-        System.out.printf("Max Value: %d%n", CutRod(5, list));
-        System.out.printf("Max Value: %d%n", CutRod(6, list));
-        System.out.printf("Max Value: %d%n", CutRod(10, list));
-        System.out.printf("Max Value: %d%n", CutRod(20, list));
+//        System.out.printf("Max Value: %d%n", CutRod(5, list));
+//        System.out.printf("Max Value: %d%n", CutRod(6, list));
+//        System.out.printf("Max Value: %d%n", CutRod(10, list));
+//        System.out.printf("Max Value: %d%n", CutRod(20, list));
+
+        int length = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the length: "));
+        JOptionPane.showMessageDialog(null, "Max Value = " + CutRod(length, list));
     }
 }

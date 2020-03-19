@@ -1,5 +1,7 @@
 package lab8_dynamic_programming;
 
+import javax.swing.*;
+
 public class A {
     public static void main (String[] args) {
         int[][] array = { // Based on the diagram: -1 -> unable to collect, 0 -> empty, 1 -> able to collect
@@ -10,7 +12,17 @@ public class A {
                 {-1, -1, -1, 0, 1, 0}
         };
 
-        System.out.printf ("Longest Path: %d", Collector(5, 6, array) );
+        JOptionPane.showMessageDialog(null, "The longest path is: " + Collector(getRow(), getColumn(), array));
+    }
+
+    public static int getRow () {
+        int rows = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of rows: "));
+        return rows;
+    }
+
+    public static int getColumn () {
+        int columns = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of columns: "));
+        return columns;
     }
 
     public static int Collector (int rows, int columns, int[][] array) {
