@@ -1,4 +1,4 @@
-package lab8;
+package lab8_dynamic_programming;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package lab8;
+package lab8_dynamic_programming;
 
 public class B {
     private static final int MIN_INTEGER = Integer.MIN_VALUE;
