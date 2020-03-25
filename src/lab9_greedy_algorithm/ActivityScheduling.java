@@ -47,8 +47,7 @@ public class ActivityScheduling {
         }
 
         // Converting the ArrayList into an array
-        Interval[] result = new Interval[s.length];
-        result = list.toArray(copyArray);
+        Interval[] result = list.toArray(copyArray);
 
         // Returning the converted array
         return result;
