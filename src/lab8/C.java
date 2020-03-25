@@ -84,8 +84,8 @@ public class C {
 
     public static void main(String[] args)
     {
-        int[] uscoins = {1, 5, 10, 25, 50};
-        int[] amount = {200, 40, 20, 8, 4};
+        int[] uscoins = {1, 2, 5, 10, 15, 20};
+        int[] amount = {34, 34, 34, 34, 34, 34};
         // you may modify this list
         Scanner sc = new Scanner (System.in);
         System.out.print("Enter an amount to make change: " );
