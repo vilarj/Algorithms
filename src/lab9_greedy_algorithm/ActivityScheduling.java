@@ -1,5 +1,7 @@
 package lab9_greedy_algorithm;
 
+import lab2_insertion_merge.Insertion_Sort;
+
 import java.util.ArrayList;
 
 public class ActivityScheduling {
@@ -20,39 +22,42 @@ public class ActivityScheduling {
         // you may add more possible activities
 
         Interval[] schedule = greedyActivitySelector (input);
-        printActivities(schedule);
+        printActivities (schedule);
     }
 
+    /**
+     * Selecting the max number of
+     * activities that can be performed by a person
+     *
+     * @param s
+     * @return
+     */
     public static Interval[] greedyActivitySelector (Interval[] s) {
-        // to be implemented
-        // copy the input array to another one
-        Interval[] list = s;
-        // sort it with any sorting method  which you have created earlier
+        // Copying input array
+        Interval[] copyArray = s;
 
-        // allocate an ArrayList of intervals
-        ArrayList<Interval> allocate = new ArrayList<>();
-        allocate.add(copy);
-        // translate the algorithm into Java code: union operation is just adding to the list
-        int n = s.length;
-        System.out.printf ("Earliest Activity: %d", list[0]); // earliest activity
+        // Sorting the copy
+        Insertion_Sort toSort = new Insertion_Sort(copyArray);
 
-        int k = 0;
+        // Allocating an array list of intervals
+        ArrayList<Interval> list = new ArrayList<>();
 
-        for (int m = 1; m < n; m++) {
-            if (list[m].s >= list[k].f)
-                allocate.add(list[m]);
+        for (int i = 0; i < s.length; i++) {
+            list.add(copyArray[i]);
         }
-        // convert ArrayList to array and return it
-        return null;
 
+        // Converting the ArrayList into an array
+        Interval[] result = new Interval[s.length];
+        result = list.toArray(copyArray);
+
+        // Returning the converted array
+        return result;
     }
 
-    // TODO: Test this part
     public static void printActivities (Interval[] a) {
         for (int i = 0; i < a.length; i++) {
-            if (a[i].s >= a[i].f) {
-                System.out.printf ("%d ", a[i].s);
-
+            if (a[i].getS() >= a[i].getF()) {
+                System.out.printf ("%d ", a[i].getS());
             }
         }
     }
