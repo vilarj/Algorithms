@@ -32,32 +32,46 @@ public class ActivityScheduling {
      * @param s
      * @return
      */
-    public static Interval[] greedyActivitySelector (Interval[] s) {
+    public static Interval[] greedyActivitySelector (Interval[] s)
+    {
+        // to be implemented
+        // copy the input array to another one
+        // sort it with any sorting method  which you have created earlier
+        // allocate an ArrayList of intervals
+        // translate the algorithm into Java code: union operation is just adding to the list
+        // convert ArrayList to array and return it
+
         // Copying input array
         Interval[] copyArray = s;
-
         // Sorting the copy
         Insertion_Sort toSort = new Insertion_Sort(copyArray);
 
         // Allocating an array list of intervals
         ArrayList<Interval> list = new ArrayList<>();
 
-        for (int i = 0; i < s.length; i++) {
-            list.add(copyArray[i]);
-        }
+        // Greedy activity selector algorithm
+        int k = 0;
+        list.add(s[0]);
+        int n = s.length;
 
-        // Converting the ArrayList into an array
-        Interval[] result = list.toArray(copyArray);
-
-        // Returning the converted array
-        return result;
-    }
-
-    public static void printActivities (Interval[] a) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i].getS() >= a[i].getF()) {
-                System.out.printf ("%d ", a[i].getS());
+        for(int m = 1; m < n; m++)
+        {
+            if(copyArray[m].getS() >= copyArray[k].getF())
+            {
+                list.add(copyArray[m]);
+                k = m;
             }
         }
+
+        // Converting and returning the ArrayList into an array
+
+        return list.toArray(copyArray);
+    }
+
+    public static void printActivities (Interval[] a)
+    {
+        for(Interval element : a)
+            if(element != null)
+                System.out.println(element);
     }
 }
