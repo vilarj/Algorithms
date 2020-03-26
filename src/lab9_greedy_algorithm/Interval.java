@@ -32,7 +32,7 @@ public class Interval implements Comparable <Interval> {
 
     @Override
     public String toString () {
-        String output = "Activities: " + s + ", " + f;
+        String output = "Activities: \n" + s + ", " + f;
         return output;
     }
 }

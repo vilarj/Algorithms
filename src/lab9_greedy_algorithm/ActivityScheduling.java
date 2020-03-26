@@ -19,10 +19,24 @@ public class ActivityScheduling {
         input[8] = new Interval(7.2, 11);
         input[9] = new Interval(8, 12);
         input[10] = new Interval(12, 16);
-        // you may add more possible activities
 
         Interval[] schedule = greedyActivitySelector (input);
         printActivities (schedule);
+
+        // lengths -> 26, 32, 48, 70
+        // lists -> {1, 2, 5, 10, 20} and {1, 10, 25, 50}
+        int[] list1 = {1, 2, 5, 10, 20};
+        int[] list2 = {26, 32, 48, 70};
+
+        changeMaking(26, list1);
+        changeMaking(32, list1);
+        changeMaking(48, list1);
+        changeMaking(70, list1);
+
+        changeMaking(26, list2);
+        changeMaking(32, list2);
+        changeMaking(48, list2);
+        changeMaking(70, list2);
     }
 
     /**
@@ -32,15 +46,7 @@ public class ActivityScheduling {
      * @param s
      * @return
      */
-    public static Interval[] greedyActivitySelector (Interval[] s)
-    {
-        // to be implemented
-        // copy the input array to another one
-        // sort it with any sorting method  which you have created earlier
-        // allocate an ArrayList of intervals
-        // translate the algorithm into Java code: union operation is just adding to the list
-        // convert ArrayList to array and return it
-
+    public static Interval[] greedyActivitySelector (Interval[] s) {
         // Copying input array
         Interval[] copyArray = s;
         // Sorting the copy
@@ -54,18 +60,39 @@ public class ActivityScheduling {
         list.add(s[0]);
         int n = s.length;
 
-        for(int m = 1; m < n; m++)
-        {
-            if(copyArray[m].getS() >= copyArray[k].getF())
-            {
+        for(int m = 1; m < n; m++) {
+            if(copyArray[m].getS() >= copyArray[k].getF()) {
                 list.add(copyArray[m]);
                 k = m;
             }
         }
 
         // Converting and returning the ArrayList into an array
-
         return list.toArray(copyArray);
+    }
+
+    /**
+     * greedy approach for change making
+     *
+     * @param n
+     * @param D
+     * @return k
+     */
+    public static int changeMaking (int n, int[] D) {
+        int m = D.length - 1, j = m, k = 0;
+
+        while (n > 0) {
+            k = k + (n / D[j]);
+            n = n % D[j];
+            j--;
+        }
+        return k;
+    }
+
+    public static void  printChange (int[] list) {
+        for (int x : list) {
+            System.out.print(x + " ");
+        }
     }
 
     public static void printActivities (Interval[] a)
