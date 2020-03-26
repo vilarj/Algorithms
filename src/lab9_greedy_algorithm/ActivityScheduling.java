@@ -2,7 +2,9 @@ package lab9_greedy_algorithm;
 
 import lab2_insertion_merge.Insertion_Sort;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ActivityScheduling {
     public static void main(String[] args) {
@@ -22,21 +24,31 @@ public class ActivityScheduling {
 
         Interval[] schedule = greedyActivitySelector (input);
         printActivities (schedule);
+        System.out.println ("");
 
         // lengths -> 26, 32, 48, 70
         // lists -> {1, 2, 5, 10, 20} and {1, 10, 25, 50}
         int[] list1 = {1, 2, 5, 10, 20};
         int[] list2 = {26, 32, 48, 70};
 
-        changeMaking(26, list1);
-        changeMaking(32, list1);
-        changeMaking(48, list1);
-        changeMaking(70, list1);
+        System.out.println ("List #1");
+        System.out.println ("Change: " + changeMaking(26, list1));
+        System.out.println ("Change: " + changeMaking(32, list1));
+        System.out.println ("Change: " + changeMaking(48, list1));
+        System.out.println ("Change: " + changeMaking(70, list1) + "\n");
 
-        changeMaking(26, list2);
-        changeMaking(32, list2);
-        changeMaking(48, list2);
-        changeMaking(70, list2);
+        System.out.println ("List #2");
+        System.out.println("Change: " + changeMaking(26, list2));
+        System.out.println("Change: " + changeMaking(32, list2));
+        System.out.println("Change: " + changeMaking(48, list2));
+        System.out.println("Change: " + changeMaking(70, list2));
+
+        Scanner in = new Scanner(System.in);
+        System.out.println ("Enter the bill to change: ");
+        int bill = in.nextInt();
+
+        System.out.println ("Register #1: " + changeMaking(bill, list1));
+        System.out.println ("Register #2: " + changeMaking(bill, list2));
     }
 
     /**
@@ -86,13 +98,8 @@ public class ActivityScheduling {
             n = n % D[j];
             j--;
         }
-        return k;
-    }
 
-    public static void  printChange (int[] list) {
-        for (int x : list) {
-            System.out.print(x + " ");
-        }
+        return k;
     }
 
     public static void printActivities (Interval[] a)
