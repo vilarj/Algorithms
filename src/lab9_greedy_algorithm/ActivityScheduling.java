@@ -2,7 +2,9 @@ package lab9_greedy_algorithm;
 
 import lab2_insertion_merge.Insertion_Sort;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ActivityScheduling {
     public static void main(String[] args) {
@@ -19,10 +21,34 @@ public class ActivityScheduling {
         input[8] = new Interval(7.2, 11);
         input[9] = new Interval(8, 12);
         input[10] = new Interval(12, 16);
-        // you may add more possible activities
 
         Interval[] schedule = greedyActivitySelector (input);
         printActivities (schedule);
+        System.out.println ("");
+
+        // lengths -> 26, 32, 48, 70
+        // lists -> {1, 2, 5, 10, 20} and {1, 10, 25, 50}
+        int[] list1 = {1, 2, 5, 10, 20};
+        int[] list2 = {26, 32, 48, 70};
+
+        System.out.println ("List #1");
+        System.out.println ("Change: " + changeMaking(26, list1));
+        System.out.println ("Change: " + changeMaking(32, list1));
+        System.out.println ("Change: " + changeMaking(48, list1));
+        System.out.println ("Change: " + changeMaking(70, list1) + "\n");
+
+        System.out.println ("List #2");
+        System.out.println("Change: " + changeMaking(26, list2));
+        System.out.println("Change: " + changeMaking(32, list2));
+        System.out.println("Change: " + changeMaking(48, list2));
+        System.out.println("Change: " + changeMaking(70, list2));
+
+        Scanner in = new Scanner(System.in);
+        System.out.println ("Enter the bill to change: ");
+        int bill = in.nextInt();
+
+        System.out.println ("Register #1: " + changeMaking(bill, list1));
+        System.out.println ("Register #2: " + changeMaking(bill, list2));
     }
 
     /**
@@ -35,29 +61,51 @@ public class ActivityScheduling {
     public static Interval[] greedyActivitySelector (Interval[] s) {
         // Copying input array
         Interval[] copyArray = s;
-
         // Sorting the copy
         Insertion_Sort toSort = new Insertion_Sort(copyArray);
 
         // Allocating an array list of intervals
         ArrayList<Interval> list = new ArrayList<>();
 
-        for (int i = 0; i < s.length; i++) {
-            list.add(copyArray[i]);
-        }
+        // Greedy activity selector algorithm
+        int k = 0;
+        list.add(s[0]);
+        int n = s.length;
 
-        // Converting the ArrayList into an array
-        Interval[] result = list.toArray(copyArray);
-
-        // Returning the converted array
-        return result;
-    }
-
-    public static void printActivities (Interval[] a) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i].getS() >= a[i].getF()) {
-                System.out.printf ("%d ", a[i].getS());
+        for(int m = 1; m < n; m++) {
+            if(copyArray[m].getS() >= copyArray[k].getF()) {
+                list.add(copyArray[m]);
+                k = m;
             }
         }
+
+        // Converting and returning the ArrayList into an array
+        return list.toArray(copyArray);
+    }
+
+    /**
+     * greedy approach for change making
+     *
+     * @param n
+     * @param D
+     * @return k
+     */
+    public static int changeMaking (int n, int[] D) {
+        int m = D.length - 1, j = m, k = 0;
+
+        while (n > 0) {
+            k = k + (n / D[j]);
+            n = n % D[j];
+            j--;
+        }
+
+        return k;
+    }
+
+    public static void printActivities (Interval[] a)
+    {
+        for(Interval element : a)
+            if(element != null)
+                System.out.println(element);
     }
 }
