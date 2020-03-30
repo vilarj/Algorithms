@@ -2,7 +2,6 @@ package lab9_greedy_algorithm;
 
 import lab2_insertion_merge.Insertion_Sort;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
