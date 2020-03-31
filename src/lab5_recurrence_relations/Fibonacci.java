@@ -20,8 +20,8 @@ public class Fibonacci {
             f1 = f2;
             f2 = f3 % 100000;
             c++;
-        }
-        while (c <= n);
+        } while (c <= n);
+
         f2 = f2 % 100000;
         return f2;
     }

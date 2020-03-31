@@ -20,6 +20,6 @@ public class main {
         }
 
         // Printing the graph
-        matrix.Adjacency();
+        matrix.Graph();
     }
 }

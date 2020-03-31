@@ -1,5 +1,7 @@
 package lab10_graphs;
 
+import java.util.LinkedList;
+
 /**
  * Part A of the word document
  */
@@ -17,12 +19,12 @@ public class AdjacencyMatrix {
         matrix[destination][root] = 1;
     }
 
-    public void Adjacency () {
+    public void Graph () {
         for (int i = 0; i < vertices; i++) {
             for (int k = 0; k < vertices; k++) {
-                System.out.print(" " + " " + " " + matrix[i][k] + " ");
+                System.out.print("              " + matrix[i][k] + " ");
             }
-            System.out.print("\n");
+            System.out.print("\n\n");
         }
     }
 }

@@ -19,10 +19,8 @@ public class main
         System.out.print("Enter Duration (seconds) > ");
         seconds = fin.nextInt();
 
-
         long timeElapsed = 0;
         long start = System.currentTimeMillis();
-
 
         do
         {
@@ -33,7 +31,6 @@ public class main
 
             if((System.currentTimeMillis() - start) > (1000 * seconds))
             {
-
                 System.out.printf("Fibbonaci Number: %d Last 5 Digits: %s N value: %d" , fibNumber, String.valueOf(fibNumber).substring(5), n);
 
                 break;
@@ -41,10 +38,5 @@ public class main
             n++;
         }
         while(true);
-
-
-
-
-
     }
 }
