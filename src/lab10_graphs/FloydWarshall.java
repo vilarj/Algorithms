@@ -7,10 +7,8 @@ import java.util.ArrayList;
  */
 public class FloydWarshall
 {
-
     private AdjacencyMatrix adjacencyMatrix;
     private int[][] floydMatrix;
-
 
     private AdjacencyMatrix adjacencyToMatrix(String[] list)
     {
@@ -26,18 +24,18 @@ public class FloydWarshall
                 Integer y = Integer.valueOf(splitVertice[2]);
 
                 points.add(new Integer[]{x, y});
-
             }
         }
 
         AdjacencyMatrix matrix = new AdjacencyMatrix(points.size());
         for(Integer[] point : points)
         {
-            matrix.addEdgeConnectivity(point[0], point[1]);
+            matrix.addEdge(point[0], point[1]);
         }
-        return matrix;
 
+        return matrix;
     }
+
     private int[][] floydImplementation(int[][] W)
     {
         int[][] D = W;
@@ -59,14 +57,11 @@ public class FloydWarshall
     public FloydWarshall(String[] input)
     {
         this.adjacencyMatrix = adjacencyToMatrix(input);
-
     }
 
     public void graphAdjacency()
     {
         this.adjacencyMatrix.Graph();
-
-
     }
     public void graphFloyd()
     {
@@ -79,8 +74,4 @@ public class FloydWarshall
             System.out.print("\n\n");
         }
     }
-
-
-
-
 }

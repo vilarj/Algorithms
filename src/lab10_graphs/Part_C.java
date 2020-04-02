@@ -6,8 +6,7 @@ public class Part_C {
         FloydWarshall fw = new FloydWarshall(new String[]{"(2, 3), (3, 8), (5, -4)", "(4, 1), (5, 7)", "(2, 4)", "(1, 2), (3, -5)", "(4, 6)"});
         System.out.println("Weight Matrix");
         fw.graphAdjacency();
-        System.out.println("Floyd Matrix");
+        System.out.println("\nFloyd Matrix");
         fw.graphFloyd();
-
     }
 }
