@@ -27,4 +27,8 @@ public class AdjacencyMatrix {
             System.out.print("\n\n");
         }
     }
+    public int[][] getWeightMatrix()
+    {
+        return matrix;
+    }
 }

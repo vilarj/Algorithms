@@ -21,5 +21,6 @@ public class main {
 
         // Printing the graph
         matrix.Graph();
+
     }
 }
