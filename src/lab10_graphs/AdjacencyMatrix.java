@@ -17,18 +17,8 @@ public class AdjacencyMatrix {
     }
 
     public void addEdge (int root, int destination) {
-//        matrix[root][destination] = 1;
-//        matrix[destination][root] = 1;
-
-        for (int i = 0; i < root; i++) {
-            ll.add(matrix[i][root]);
-            ll.add(matrix[i][destination]);
-
-            for (int k = 0; k < destination; k++) {
-                ll.add(matrix[k][destination]);
-                ll.add(matrix[k][root]);
-            }
-        }
+        ll.add(matrix[root][destination] = 1);
+        ll.add(matrix[destination][root] = 1);
     }
 
     public void Graph () {
