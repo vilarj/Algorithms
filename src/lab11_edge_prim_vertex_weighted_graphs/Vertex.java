@@ -58,7 +58,7 @@ public class Vertex implements Comparable <Vertex> {
     }
 
     public double [] getWeights() {
-        // to implement
+        // TODO: implement
         return null;
     }
 
@@ -68,12 +68,12 @@ public class Vertex implements Comparable <Vertex> {
     }
 
     public String toString() {
-        // to implement
+        // TODO: implement
         return "";
     }
 
     public int compareTo (Vertex other) {
-        // to implement
+        // TODO: implement
         return 0;
     }
 }
