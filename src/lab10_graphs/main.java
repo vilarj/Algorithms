@@ -15,8 +15,7 @@ public class main {
             root = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the root vertex"));
             destination = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the destination"));
 
-            // Allocating the position of the graph
-            matrix.addEdgeConnectivity(root, destination);
+            matrix.addEdge(root, destination);
         }
 
         // Printing the graph
