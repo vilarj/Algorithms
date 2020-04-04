@@ -1,6 +1,5 @@
 package lab11_edge_prim_vertex_weighted_graphs;
 
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class Prim {

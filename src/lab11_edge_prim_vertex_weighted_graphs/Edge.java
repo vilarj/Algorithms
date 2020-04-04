@@ -6,7 +6,9 @@ public class Edge {
     private double weight;
 
     public Edge (Vertex v1, Vertex v2, double weight) {
-        this.v1 = v1; this.v2 = v2; this.weight = weight;
+        this.v1 = v1;
+        this.v2 = v2;
+        this.weight = weight;
     }
 
     public Vertex getFirst() {
@@ -22,7 +24,7 @@ public class Edge {
     }
 
     public String toString() {
-        // to implement
-        return null;
+        String format = "First Vertex: " + getFirst() + "\nSecond: Vertex" + getSecond() + "\nWeight: " + getWeight();
+        return format;
     }
 }

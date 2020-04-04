@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class WeightedGraph {
     private Vertex [] vertices;
     private ArrayList <Edge> edges;
-
     public static final double INF = 1e13;
 
     public WeightedGraph (Vertex [] vertices, ArrayList<Edge> edges) {
@@ -37,12 +36,12 @@ public class WeightedGraph {
             int n = lines.size();
             read.close();
             if (n == 0)
-                return null;
+                return ; // TODO: Return value
             Vertex [] vertices = new Vertex [n];
             ArrayList <Edge> edges = new ArrayList <>();
             Edge curEdge;
-            Vertex u, v;
-            double weight;
+            Vertex u, v = null; // TODO: Initialize this part
+            double weight = 0; // TODO: Set this variable
             // allocate array of raw vertices
             for (int i = 0; i < n; i ++) {
                 vertices[i] = new Vertex (i+1);
