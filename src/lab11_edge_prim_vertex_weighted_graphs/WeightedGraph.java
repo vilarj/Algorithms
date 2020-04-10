@@ -15,7 +15,7 @@ public class WeightedGraph {
         this.edges = edges;
     }
 
-    protected Vertex[] getVertices () {
+    Vertex[] getVertices () {
         return vertices;
     }
 
@@ -24,7 +24,7 @@ public class WeightedGraph {
             System.out.println (e);
     }
 
-    public static void fillGraphFromFile (String fileName, boolean directed) {
+    public void fillGraphFromFile(String fileName, boolean directed) {
         File f = new File (fileName);
         try {
             Scanner read = new Scanner (f);
@@ -74,7 +74,7 @@ public class WeightedGraph {
         }
     }
 
-    private void initializePrim (int id ) {
+    public void initializePrim(int id) {
         for (Vertex v: vertices) {
             if (v.getId() == id)
                 v.setKey(0);

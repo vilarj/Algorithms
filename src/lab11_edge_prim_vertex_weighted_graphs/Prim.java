@@ -5,10 +5,10 @@ import java.util.PriorityQueue;
 public class Prim {
     public static Edge [] prim (WeightedGraph g, int rootId) {
         g.initializePrim (rootId);
-        Vertex r = vertices[rootId-1];
+        Vertex[] r = new Vertex[rootId-1];
 
         PriorityQueue <Vertex> Q = new PriorityQueue<>();
-        for (Vertex v : vertices)
+        for (Vertex v : Q)
             Q.add(v);
         while (!Q.isEmpty()) {
             u = Q.poll();
